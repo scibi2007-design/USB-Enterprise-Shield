@@ -1,0 +1,247 @@
+# =============================================================================
+# USB Enterprise Shield — .gitignore
+# =============================================================================
+
+
+# -----------------------------------------------------------------------------
+# SECURITY — NEVER commit these
+# -----------------------------------------------------------------------------
+
+# AES-256 quarantine key (losing this = can't restore quarantined files;
+# leaking this = attacker can decrypt your vault)
+quarantine_key.bin
+**/quarantine_key.bin
+
+# Config file may contain API keys (VT, MalwareBazaar, Any.Run, Cuckoo)
+config.json
+**/config.json
+
+# Quarantine vault — encrypted threat files + metadata
+quarantine/
+**/quarantine/
+
+# Trained ML model may encode information about your malware samples
+*.joblib
+*.pkl
+*.pickle
+models/
+
+
+# -----------------------------------------------------------------------------
+# RUNTIME DATA — generated on every run, not source code
+# -----------------------------------------------------------------------------
+
+# All data written by the scanner at runtime
+USB_Enterprise_Shield_Data/
+usb_shield_data/
+
+# Scan reports (txt / json / html / csv / pdf)
+reports/
+report_*.txt
+report_*.json
+report_*.html
+report_*.csv
+report_*.pdf
+
+# SQLite databases (scan cache + device history)
+*.sqlite
+*.sqlite3
+*.db
+scan_cache.json
+scan_cache.json.migrated
+device_history.json
+device_history.json.migrated
+
+# YARA compiled rule caches
+*.yarc
+*.yas
+
+# Entropy / hash cache dumps
+_entropy_cache*
+_hash_cache*
+
+# Trusted device registry (contains host-specific serial numbers)
+trusted_devices.json
+
+# Log files
+*.log
+*.log.*
+usb_enterprise_shield.log
+
+
+# -----------------------------------------------------------------------------
+# PYTHON
+# -----------------------------------------------------------------------------
+
+# Byte-compiled / optimised / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+
+# C extensions
+*.so
+*.pyd
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+*.egg
+MANIFEST
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.env
+.env.*
+
+# pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# setuptools
+*.spec
+
+# mypy / pyright / type checkers
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+pyrightconfig.json
+
+# pytest / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+*.cover
+nosetests.xml
+
+# tox
+.tox/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# pyenv
+.python-version
+
+
+# -----------------------------------------------------------------------------
+# MALWARE SAMPLES — never commit actual malware to a public repo
+# -----------------------------------------------------------------------------
+samples/
+malware/
+test_samples/
+*.malware
+*.vir
+*.infected
+*.quar
+
+# Test fixtures that might contain real IOC data
+fixtures/real_*
+testdata/live_*
+
+
+# -----------------------------------------------------------------------------
+# OS
+# -----------------------------------------------------------------------------
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+.TemporaryItems
+.DocumentRevisions-V100
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+*.icloud
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+*.stackdump
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+
+# -----------------------------------------------------------------------------
+# EDITORS & IDEs
+# -----------------------------------------------------------------------------
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# PyCharm / JetBrains
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Vim / Neovim
+*.swp
+*.swo
+*.swn
+*~
+.netrwhist
+
+# Emacs
+\#*\#
+.\#*
+*.elc
+auto-save-list
+tramp
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# Spyder
+.spyderproject.cfg
+.spyproject/
+
+
+# -----------------------------------------------------------------------------
+# TEMPORARY & BUILD ARTEFACTS
+# -----------------------------------------------------------------------------
+tmp/
+temp/
+.tmp/
+usb_shield_arc_*/          # ArchiveScanner temp extraction dirs
+restore_tmp*
+*.restore_tmp
+
+# Any compiled YARA rules
+compiled_rules/
+
+# Profiling output
+*.prof
+*.lprof
+profile_output/
